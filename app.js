@@ -2,9 +2,18 @@ const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
 const nodemailer = require('nodemailer');
+const mongoose = require('mongoose');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const Contact = require('./contacts/contactModel');
+//using local database
+const db = mongoose.connect('mongodb://localhost/contact',
+    {
+        useUnifiedTopology: true,
+        useNewUrlParser: true
+    }
+);
 
 //set the template engine
 app.engine('.hbs', exphbs({defaultLayout: 'main',extname: '.hbs' }));
@@ -32,7 +41,19 @@ app.post('/send', (req, res) =>{
             
         </ul>    
     `;
+    const contact = new Contact(req.body)
+
+    contact.save((err, success) => {
+        if (err){
+            return console.log(err);
+        }
+        if(success){
+            return res.status(201);
+            console.log('Data Succesfully added');
+        }
+    });
     console.log(details);
+
 });
 
 app.listen(PORT, ()=> `App running on port ${PORT}`);
