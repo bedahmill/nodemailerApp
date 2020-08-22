@@ -59,6 +59,7 @@ app.post("/send", (req, res) => {
       auth: {
         type: "OAuth2",
         user: "miltonbedah@gmail.com",
+        // create your own accesstoken since this one will expire
         accessToken:
           "ya29.a0AfH6SMDXDC0nnCOnzZe-rcM0eyouScRz-gBSXqu0XwTbmt4cUNtxDArRD2U9HguYDpjzrQL6U8YUEot0gHQR67CgEkbAQOs8MGlYRG5oR9vfUzV0k5YaG0s2-q6jDlX5lnEGk5joIdFwgcsHTxSVwSLltjW_8C3EuT8",
       },
