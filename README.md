@@ -31,4 +31,4 @@ npm run dev
 
 ## Acknowledgments
 
-* Alex [reference](https://medium.com/@alexb72)
+* Alex - [Hisreference](https://medium.com/@alexb72)
